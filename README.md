@@ -14,7 +14,7 @@ warnings
 
 os
 
-# usage(用法)
+# usage(用法):
 
 python xxxx.py
 
