@@ -12,8 +12,8 @@ warnings.filterwarnings("ignore")
 
 
 path = 'D:/slowmo/SVFI/SVFI.2.3.3.alpha/output/tmp' #图片路径
-max_ssim = 99.8
-min_vec = 0.5 #最小运动幅度（ssim变化值）
+max_ssim = 99.9
+min_vec = 0.8 #最小运动幅度（ssim变化值）
 
 
 
