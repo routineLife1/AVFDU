@@ -41,6 +41,9 @@ for i in range(1,len(frames)):
 for x in delgen:
     os.remove(x)
 
+LabData = None
+frames = None
+delgen = None
 
 #去除一拍二
 
@@ -72,7 +75,9 @@ for x in duplicate:
         print('pass:{}'.format(x[2]))
 
 
-
+LabData = None
+frames = None
+duplicate = None
 #去除一拍三
 
 print('loading data to ram...') #将数据载入到内存中，加速运算
