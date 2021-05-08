@@ -3,7 +3,7 @@
 from tqdm import tqdm
 import cv2
 import numpy as np
-from skimage import measure
+from skimage.metrics import structural_similarity as compare_ssim
 import warnings
 import os
 from skimage import measure
@@ -21,7 +21,7 @@ def mask_denoise(mask):
     return np.in1d(labels, [0]).reshape(labels.shape)
 
 def ssim(i0,i1):
-    return measure.compare_ssim(i0,i1,multichannel=True)*100
+    return compare_ssim(i0,i1,multichannel=True)*100
 
 #使用五帧
 def compare(i0,i1,i2,i3,i4):
