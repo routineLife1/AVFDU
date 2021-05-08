@@ -3,13 +3,13 @@
 from tqdm import tqdm
 import cv2
 import numpy as np
-from skimage.metrics import structural_similarity as compare_ssim
 import warnings
 import os
+from skimage.metrics import structural_similarity as compare_ssim
 from skimage import measure
 warnings.filterwarnings("ignore")
 
-min_vec = 2 
+min_vec = 5
 path = 'D:/im' #图片路径
 
 LabData = [os.path.join(path,f) for f in os.listdir(path)]
