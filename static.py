@@ -3,7 +3,7 @@
 from tqdm import tqdm
 import cv2
 import numpy as np
-from skimage import measure
+from skimage.metrics import structural_similarity as compare_ssim
 import warnings
 import os
 warnings.filterwarnings("ignore")
@@ -17,7 +17,7 @@ LabData = [os.path.join(path,f) for f in os.listdir(path)] #记录文件名用
 frames = [cv2.resize(cv2.imread(f),(256,256)) for f in LabData]
 
 def ssim(i0,i1):
-    return measure.compare_ssim(i0,i1,multichannel=True)*100
+    return compare_ssim(i0,i1,multichannel=True)*100
 
 pbar = tqdm(total=len(frames))
 delgen = []
