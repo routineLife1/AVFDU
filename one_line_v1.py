@@ -2,6 +2,7 @@
 from tqdm import tqdm
 import cv2
 import numpy as np
+from skimage import measure
 from skimage.metrics import structural_similarity as compare_ssim
 import warnings
 import os
@@ -71,7 +72,7 @@ LabData = None
 frames = None
 duplicate = None
 #去除一拍三
-min_vec = 2
+#min_vec = 2
 print('loading data to ram...') #将数据载入到内存中，加速运算
 LabData = [os.path.join(path,f) for f in os.listdir(path)]
 frames = [cv2.resize(cv2.imread(f),(256,256)) for f in LabData]
