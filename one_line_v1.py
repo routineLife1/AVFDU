@@ -38,8 +38,10 @@ LabData = None
 frames = None
 delgen = None
 
+
+mid_ssim = 90
+min_vec = 0.8
 #去除一拍二
-min_vec = 5 #最小运动幅度（ssim变化值）
 print('loading data to ram...') #将数据载入到内存中，加速运算
 LabData = [os.path.join(path,f) for f in os.listdir(path)] #记录文件名用
 frames = [cv2.resize(cv2.imread(f),(256,256)) for f in LabData]
@@ -57,13 +59,13 @@ for i in range(1,len(LabData)-2):
     x2 = ssim(I1,I2)
     x3 = ssim(I2,I3)
     #   左侧ssim - 中间值(i1,i2) > 最小运动幅度     中间值 - 右侧ssim > 最小运动幅度
-    if x2-x1 > min_vec and x2-x3 > min_vec:
+    if x2-x1 > min_vec and x2-x3 > min_vec and x2 > mid_ssim:
         duplicate.append([LabData[i-1],LabData[i],LabData[i+1],LabData[i+2]]) # i-1,i,i+1,i+2分别为i0,i1,i2,i3
     I0 = I1
     pbar.update(1)
 for x in duplicate:
     try:
-        os.remove(x[1]) #i0,i1,i2,i3 这里移除的是i1帧 （也可以选择i2帧）
+        os.remove(x[2]) #i0,i1,i2,i3 这里移除的是i2帧 （也可以选择i1帧）
     except:
         print('pass:{}'.format(x[2]))
 
@@ -72,7 +74,6 @@ LabData = None
 frames = None
 duplicate = None
 #去除一拍三
-#min_vec = 2
 print('loading data to ram...') #将数据载入到内存中，加速运算
 LabData = [os.path.join(path,f) for f in os.listdir(path)]
 frames = [cv2.resize(cv2.imread(f),(256,256)) for f in LabData]
@@ -119,13 +120,13 @@ for i in range(1,len(LabData)-3):
     # ssim(i3,i4)
     r = ssim(c[3],c[4])
     # 估计三帧ssim值(i1,i2,i3) - ssim(i0,i1) > min_vec AND 估计三帧ssim值 - ssim(i3,i4) > min_vec
-    if m - l > min_vec and m - r > min_vec:
+    if m - l > min_vec and m - r > min_vec and m > mid_ssim:
         duplicate.append([LabData[i-1],LabData[i],LabData[i+1],LabData[i+2],LabData[i+3]])
     pbar.update(1)
     i0 = i1
 for x in duplicate:
     try:
-        os.remove(x[1]) #这里选择移除前两帧，具体可以自己选择
-        os.remove(x[2])
+        os.remove(x[1]) #这里选择移除旁边两帧，具体可以自己选择
+        os.remove(x[3])
     except:
         print('pass')
