@@ -37,3 +37,10 @@ path -> path to video frames(视频帧路径)
 max_ssim -> deduplicate thresold using ssim(去除重复帧ssim阈值)
 
 min_vec -> deduplicate one beta x using ssim(x = 2,3)(去除一拍二一拍三ssim阈值)
+
+# 补足删去的重复帧:
+
+你可以使用RIFEInterpolation中提供的reduplicate_torch_near.py补足删去的重复帧
+
+[RIFEInterpolation](https://github.com/YiWeiHuang-stack/RIFEInterpolation)
+
