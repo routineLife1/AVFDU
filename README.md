@@ -44,3 +44,6 @@ min_vec -> deduplicate one beta x using ssim(x = 2,3)(去除一拍二一拍三ss
 
 [RIFEInterpolation](https://github.com/YiWeiHuang-stack/RIFEInterpolation)
 
+# 效果预览:
+
+由于设备问题，仅提供270P效果视频
