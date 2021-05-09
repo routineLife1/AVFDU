@@ -47,3 +47,5 @@ min_vec -> deduplicate one beta x using ssim(x = 2,3)(去除一拍二一拍三ss
 # 效果预览:
 
 由于设备问题，仅提供270P效果视频
+
+https://drive.google.com/drive/folders/1Nl1VAIOmP-CiJ-F0GwGtGP0ryGxoQNWZ?usp=sharing
