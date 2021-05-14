@@ -11,7 +11,3 @@ numpy
 skimage
 
 warnings
-
-# 新闻：我们的识别准确率达到了100%！！！
-
-
