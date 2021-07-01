@@ -6,7 +6,7 @@ import os
 import numpy as np
 warnings.filterwarnings("ignore")
 
-path = 'D:/experiment/AVFDU/origin' # 图片路径
+path = '' # 图片路径
 static_thresold = 0.01 # 绝对重复帧最小阈值
 img_load_size = [256,256]
 flow_scale_size = [32,32] # 光流计算缩放大小
