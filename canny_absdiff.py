@@ -5,7 +5,7 @@ import os
 warnings.filterwarnings("ignore")
 
 
-path = 'D:/experiment/AVFDU/origin' # 图片路径
+path = '' # 图片路径
 death_diff = 20 # 中间最大运动幅度, 挡住个别误判和背景大幅度运动人物不动的场景
 max_epoch = 7 # 一直去除到一拍N，N为max_epoch
 
