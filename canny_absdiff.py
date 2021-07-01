@@ -36,8 +36,7 @@ for _ in range(max_epoch):
             Current.append(i) # 加入标记序号
     opted = len(opt) # 记录opt长度
     for x in Current:
-        #if x - 1 not in opt and x + 1 not in opt and x not in opt: # 弃用
-        if x not in opt: # 优化:该轮一拍N不可能出现在上一轮中
+        if x - 1 not in opt and x + 1 not in opt and x not in opt: # 优化:该轮一拍N不可能出现在上一轮中
             for t in range(queue_size-3):
                 opt.append(t + x)
     pbar.update(1) # 完成一轮
