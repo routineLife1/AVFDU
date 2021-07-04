@@ -167,7 +167,7 @@ for queue_size, _ in enumerate(range(1,max_epoch), start=4):
         pbar.update(1)
     opted = len(opt) # 记录opt长度
     for x in Current:
-        if x not in opt: # 该轮一拍N不应该出现在上一轮中
+        #if x not in opt: # 该轮一拍N不应该出现在上一轮中（这个已经不需要了）
             for t in range(queue_size-3):
                 opt.append(t + x + 1)
     pbar.update(1) # 完成一轮
