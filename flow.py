@@ -1,3 +1,4 @@
+from math import exp
 import threading
 from tqdm import tqdm
 import cv2
@@ -6,11 +7,12 @@ import os
 import numpy as np
 warnings.filterwarnings("ignore")
 
-path = '' # 图片路径
+path = 'D:\slowmo\RIFEInterpolation\input' # 图片路径
 static_thresold = 0.01 # 绝对重复帧最小阈值
+thresold = 1000 # 阈值（无穷大 = 完全去除一拍N
 img_load_size = [256,256]
 flow_scale_size = [32,32] # 光流计算缩放大小
-max_epoch = 3 # 一直去除到一拍N，N为max_epoch（不建议超过3）
+max_epoch = 8 # 一直去除到一拍N，N为max_epoch（不建议超过3）
 use_sobel = False # 使用sobel进行边缘检测（复合canny）
 use_flow = True  # 使用光流
 flow_ensemble = False # 双向光流
@@ -167,17 +169,33 @@ for queue_size, _ in enumerate(range(1,max_epoch), start=4):
         pbar.update(1)
     opted = len(opt) # 记录opt长度
     for x in Current:
-        #if x not in opt: # 该轮一拍N不应该出现在上一轮中（这个已经不需要了）
-            for t in range(queue_size-3):
-                opt.append(t + x + 1)
+        for t in range(queue_size-3):
+            opt.append(t + x + 1)
     pbar.update(1) # 完成一轮
 
 print('concat result...')
 opt.extend(static)
 delgen=sorted(set(opt)) # 需要删除的帧
-for d in delgen:
+# for d in delgen:
+#     try:
+#         os.remove(LabData[d])
+#     except:
+#         print('pass')
+# pbar.close()
+
+static = []
+pbar = tqdm(total=len(frames))
+lf = frames[0]
+for i in range(1,len(frames)):
+    f = frames[i]
+    if diff_canny(lf,f) <= thresold:
+        static.append(i-1)
+    lf = f
+    pbar.update(1)
+
+for s in static:
     try:
-        os.remove(LabData[d])
+        if s in delgen:
+            os.remove(LabData[s])
     except:
         print('pass')
-pbar.close()
