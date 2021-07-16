@@ -8,11 +8,11 @@ import numpy as np
 warnings.filterwarnings("ignore")
 
 path = 'D:\slowmo\RIFEInterpolation\input' # 图片路径
-static_thresold = 0.01 # 绝对重复帧最小阈值
+static_thresold = 0 # 绝对重复帧最小阈值
 thresold = 1000 # 阈值（无穷大 = 完全去除一拍N
 img_load_size = [256,256]
 flow_scale_size = [32,32] # 光流计算缩放大小
-max_epoch = 8 # 一直去除到一拍N，N为max_epoch（不建议超过3）
+max_epoch = 3 # 一直去除到一拍N，N为max_epoch（不建议超过3）
 use_sobel = False # 使用sobel进行边缘检测（复合canny）
 use_flow = True  # 使用光流
 flow_ensemble = False # 双向光流
