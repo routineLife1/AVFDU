@@ -14,3 +14,7 @@ numpy
 skimage
 
 warnings
+
+# 使用方法:
+
+flow.py   10-18行的参数改一下就可以用了
