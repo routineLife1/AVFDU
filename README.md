@@ -3,17 +3,13 @@
 
 # 环境需求:
 
-python 3.7
+python 3.7 or higher vision
 
 tqdm
 
 python-opencv
 
 numpy
-
-skimage
-
-warnings
 
 # 使用方法:
 
