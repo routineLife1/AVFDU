@@ -1,5 +1,6 @@
-# 动漫一拍N自动识别算法
+# 新工作 [AFI-ForwardDeduplicate](https://github.com/hyw-dev/AFI-ForwardDeduplicate) 有更好的表现
 
+# 动漫一拍N自动识别算法
 
 # 环境需求:
 
